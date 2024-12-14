@@ -1,6 +1,7 @@
-import React from 'react'
-import Head from '../../components/Header'
-import Foot from '../../components/Footer'
+import React from 'react';
+import Head from '../../components/Header';
+import Foot from '../../components/Footer';
+import Image from 'next/image';
 
 const Contact = () => {
     return (
@@ -11,22 +12,25 @@ const Contact = () => {
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto flex flex-col">
                     <div className="lg:w-full mx-auto">
-                        <div className="rounded-lg h-96  overflow-hidden">
-                            <img
+                        <div className="rounded-lg h-96 overflow-hidden">
+                            <Image
                                 alt="content"
                                 className="object-cover object-center h-full w-full"
                                 src="../../../about.png"
+                                width={500} // Add a width for optimization
+                                height={500} // Add a height for optimization
                             />
                         </div>
                         <div className="flex flex-col sm:flex-row mt-10">
                             <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
                                 <div className="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-                                    <img
+                                    <Image
                                         src="../../../amar.jpg"
                                         alt="Your Profile Picture"
                                         className="w-20 h-20 rounded-full"
+                                        width={80}
+                                        height={80}
                                     />
-
                                 </div>
                                 <div className="flex flex-col items-center text-center justify-center">
                                     <h2 className="font-medium title-font mt-4 text-gray-900 text-xl">
@@ -45,7 +49,7 @@ const Contact = () => {
                                     Locavore small batch listicle gastropub farm-to-table lumbersexual
                                     salvia messenger bag. Coloring book flannel truffaut craft beer
                                     drinking vinegar sartorial, disrupt fashion axe normcore meh
-                                    butcher. Portland 90's scenester vexillologist forage post-ironic
+                                    butcher. Portland 90&apos;s scenester vexillologist forage post-ironic
                                     asymmetrical, chartreuse disrupt butcher paleo intelligentsia pabst
                                     before they sold out four loko. 3 wolf moon brooklyn.
                                 </p>
@@ -82,7 +86,7 @@ const Contact = () => {
                             marginWidth={0}
                             scrolling="no"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16089.505862310723!2d67.05740720250033!3d24.95547034439802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb340979a089751%3A0xb5046520e6b41807!2sBuffer%20Zone%2C%20Karachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e1!3m2!1sen!2s!4v1731897032034!5m2!1sen!2s"
-                            style={{ filter: "contrast(1) " }}
+                            style={{ filter: "contrast(1)" }}
                         />
                         <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md">
                             <div className="lg:w-1/2 px-6">
@@ -149,18 +153,15 @@ const Contact = () => {
                             Button
                         </button>
                         <p className="text-xs text-gray-500 mt-3">
-                            Chicharrones blog helvetica normcore iceland tousled brook viral
-                            artisan.
+                            Chicharrones blog helvetica normcore iceland tousled brook viral artisan.
                         </p>
                     </div>
                 </div>
             </section>
 
-
             <Foot />
-
         </div>
-    )
+    );
 }
 
 export default Contact;

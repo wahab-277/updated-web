@@ -2,7 +2,7 @@ import React from 'react'
 import Image from "next/image";
 import Head from "../components/Header";
 import Foot from "../components/Footer"
-import Inter from "next/font/google"
+
 
 
 const Home = () => {

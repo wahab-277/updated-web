@@ -1,15 +1,12 @@
 "use client"
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
-import { useEffect, useRef } from 'react';
-
 
 const Foot: React.FC = () => {
 
     const footerRef = useRef<HTMLDivElement | null>(null);
+
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
           if (footerRef.current) {
@@ -28,36 +25,37 @@ const Foot: React.FC = () => {
             footerRef.current.style.backgroundPosition = `${50 + moveX}% ${50 + moveY}%`;
           }
         };
-    
+
+        const footerElement = footerRef.current; // Store the ref value in a local variable
+        
         // Attach the event listener to footer element
-        footerRef.current?.addEventListener('mousemove', handleMouseMove);
-    
+        if (footerElement) {
+          footerElement.addEventListener('mousemove', handleMouseMove);
+        }
+
         // Clean up event listener on unmount
-        return () => footerRef.current?.removeEventListener('mousemove', handleMouseMove);
-      }, []);
-    
+        return () => {
+          if (footerElement) {
+            footerElement.removeEventListener('mousemove', handleMouseMove);
+          }
+        };
+    }, []);
 
     return (
-
-
-        <div  ref={footerRef} className="footer bg-[url('/map.png')] bg-cover bg-center bg-black text-center text-sm text-white border-t border-[#eaeaea]">
-           
+        <div ref={footerRef} className="footer bg-[url('/map.png')] bg-cover bg-center bg-black text-center text-sm text-white border-t border-[#eaeaea]">
             <div className="container justify-center flex flex-col mt-20 pb-5 mx-auto px-5 max-w-[1200px]">
-
-
                 <div className="footer-item m-2 flex-[1_0_200px] text-left md:flex-[1_0_100%] md:text-center">
                     <Link className='text-white text-2xl no-underline hover:text-[#23527c]' href="/about">About Us</Link>
                 </div>
-                <div className="footer-item m-2 flex-[1_0_200px]  text-left md:flex-[1_0_100%] md:text-center">
+                <div className="footer-item m-2 flex-[1_0_200px] text-left md:flex-[1_0_100%] md:text-center">
                     <Link className='text-white text-2xl no-underline hover:text-[#23527c]' href="/contact">Contact Us</Link>
                 </div>
-                <div className="footer-item m-2 flex-[1_0_200px]  text-left md:flex-[1_0_100%] md:text-center">
+                <div className="footer-item m-2 flex-[1_0_200px] text-left md:flex-[1_0_100%] md:text-center">
                     <Link className='text-white text-2xl no-underline hover:text-[#23527c]' href="/services">Terms of Service</Link>
                 </div>
-                <div className="footer-item m-2 flex-[1_0_200px]  text-left md:flex-[1_0_100%] md:text-center">
+                <div className="footer-item m-2 flex-[1_0_200px] text-left md:flex-[1_0_100%] md:text-center">
                     <Link className='text-white text-2xl no-underline hover:text-[#23527c]' href="/privacy">Privacy Policy</Link>
                 </div>
-
 
                 <div className="social-icons md:mt-5 md:mb-5">
                     <Link className="mx-1 text-[18px]" href="#" target="_blank">
@@ -78,12 +76,10 @@ const Foot: React.FC = () => {
                     <p>&copy; 2024 My Website. All Rights Reserved.</p>
                 </div>
 
-
-            </div>   {/*container*/}
+            </div>  {/*container*/}
 
         </div>   /*footer*/
-
-    )
-}
+    );
+};
 
 export default Foot;
